@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7935264449563756845}
   - component: {fileID: 4758799566478150194}
   - component: {fileID: 467565247811784734}
+  - component: {fileID: 8779392561075746256}
   m_Layer: 0
   m_Name: antonowka
   m_TagString: Untagged
@@ -308,3 +309,19 @@ PolygonCollider2D:
       - {x: 0.04290297, y: -0.49919808}
       - {x: 0.06535686, y: -0.4967923}
       - {x: 0.08219727, y: -0.49438652}
+--- !u!58 &8779392561075746256
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2569118379794587586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6

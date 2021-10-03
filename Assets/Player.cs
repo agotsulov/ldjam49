@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
 
     public List<GameObject> playerPrefabs;
 
+    public List<float> mass;
+
     private GameObject currentChild;
 
     private Vector3 bgPos;
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("Update1Sec", 0.0f, 2.5f);
+        InvokeRepeating("Update1Sec", 0.0f, 0.5f);
 
         ChangeForm(0);
     }
@@ -46,10 +48,11 @@ public class Player : MonoBehaviour
     {
         float r = Random.Range(0.0f, 1.0f);
 
-        if ((0.10 > r) && (r < 0.11f))
+        if ((0.1 > r) && (r < 0.3f))
         {
             int idx = (int)Random.Range(0.0f, playerPrefabs.Count);
             ChangeForm(idx);
+            rb.mass = mass[idx];
         }
 
     }
@@ -86,7 +89,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (transform.position.y < -50.0f)
+        if ((transform.position.y < -50.0f) || (transform.position.x < -120f) || (transform.position.x > 120f))
         {
             SceneManager.LoadScene("SampleScene");
         }
@@ -102,20 +105,40 @@ public class Player : MonoBehaviour
         currentChild = newForm;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Ground")
+    //     {
+    //         onGround = true;
+    //     }
+    // }
+
+
+    // void OnCollisionExit2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.tag == "Ground")
+    //     {
+    //         onGround = false;
+    //     }
+    // }
+
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground")
         {
             onGround = true;
         }
     }
 
-
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D col)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground")
         {
             onGround = false;
         }
     }
+
+
+
+
 }

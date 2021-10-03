@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9085834074244419983}
   - component: {fileID: 5431465125311662322}
   - component: {fileID: 6351190687272333861}
+  - component: {fileID: 6379281500855201652}
   m_Layer: 0
   m_Name: Logo
   m_TagString: Untagged
@@ -165,3 +166,29 @@ PolygonCollider2D:
       - {x: 0.14948681, y: -0.5048284}
       - {x: 0.1683589, y: -0.48645294}
       - {x: 0.18971416, y: -0.46559432}
+--- !u!61 &6379281500855201652
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571676721829296470}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0171063, y: 1.0166097}
+    newSize: {x: 20.820166, y: 20.81}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.15, y: 1.15}
+  m_EdgeRadius: 0

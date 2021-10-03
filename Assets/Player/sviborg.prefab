@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5688821321777879835}
   - component: {fileID: 2756183963594804870}
   - component: {fileID: 2134348751339818890}
+  - component: {fileID: 3125334751031259281}
   m_Layer: 0
   m_Name: sviborg
   m_TagString: Untagged
@@ -193,3 +194,19 @@ PolygonCollider2D:
       - {x: 0.095, y: -0.47333336}
       - {x: 0.12666667, y: -0.46666667}
       - {x: 0.13666667, y: -0.455}
+--- !u!58 &3125334751031259281
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607007151657034429}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6

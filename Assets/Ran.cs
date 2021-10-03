@@ -5,11 +5,12 @@ using UnityEngine;
 public class Ran : MonoBehaviour
 {
 
-    private float distance = 18;
+    private float distance = 25;
+    private float maxD = 50;
     private GameObject followObject;
     public List<GameObject> prefabs;
 
-    private Vector3 generationOffset = new Vector3(1f, 1f, 10f);
+    private Vector3 generationOffset = new Vector3(5f, 5f, 10f);
 
     private Vector3 pos;
 
@@ -43,10 +44,14 @@ public class Ran : MonoBehaviour
 
     void UpdateForm()
     {
-        if (Vector3.Distance(transform.position, followObject.transform.position) > distance)
+        float dis = Vector3.Distance(transform.position, followObject.transform.position);
+        if (dis < maxD)
         {
-            int idx = (int)Random.Range(0.0f, prefabs.Count);
-            ChangeForm(idx);
+            if (dis > distance)
+            {
+                int idx = (int)Random.Range(0.0f, prefabs.Count);
+                ChangeForm(idx);
+            }
         }
     }
 }

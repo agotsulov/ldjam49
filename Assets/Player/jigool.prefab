@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7875916303951551442}
   - component: {fileID: 5979172732958730406}
   - component: {fileID: 7238243954734648337}
+  - component: {fileID: 4598640001254442252}
   m_Layer: 0
   m_Name: jigool
   m_TagString: Untagged
@@ -269,3 +270,19 @@ PolygonCollider2D:
       - {x: -0.0016666667, y: -0.4827778}
       - {x: 0.0044444446, y: -0.48000002}
       - {x: 0.007222222, y: -0.4788889}
+--- !u!70 &4598640001254442252
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2856280442414043611}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.4, y: 1.1}
+  m_Direction: 0
