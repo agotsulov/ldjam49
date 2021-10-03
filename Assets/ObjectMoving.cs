@@ -5,11 +5,11 @@ using UnityEngine;
 public class ObjectMoving : MonoBehaviour
 {
     private GameObject followObject;
-    private float distance = 14;
+    private float distance = 18;
     private float d2 = 14;
-    private float d3 = 14;
+    private float d3 = 13;
 
-    private Vector3 generationOffset = new Vector3(100f, 100f, 10f);
+    private Vector3 generationOffset = new Vector3(80f, 120f, 10f);
 
     private Vector3 pos;
 
@@ -18,7 +18,7 @@ public class ObjectMoving : MonoBehaviour
     void Start()
     {
         followObject = GameObject.Find("Player");
-        InvokeRepeating("UpdatePos", 0.0f, 1.0f);
+        InvokeRepeating("UpdatePos", 0.0f, 2.0f);
     }
 
 
@@ -36,6 +36,8 @@ public class ObjectMoving : MonoBehaviour
                 Vector3 swipe = pos - followObject.transform.position;
 
                 Vector3 direction = swipe.normalized;
+
+                pos += direction * d3;
             }
 
             transform.position = pos;

@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("Update1Sec", 0.0f, 1.0f);
+        InvokeRepeating("Update1Sec", 0.0f, 2.5f);
 
         ChangeForm(0);
     }
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     {
         float r = Random.Range(0.0f, 1.0f);
 
-        if ((0.49 > r) && (r < 0.5f))
+        if ((0.10 > r) && (r < 0.11f))
         {
             int idx = (int)Random.Range(0.0f, playerPrefabs.Count);
             ChangeForm(idx);
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (transform.position.y < -10.0f)
+        if (transform.position.y < -50.0f)
         {
             SceneManager.LoadScene("SampleScene");
         }

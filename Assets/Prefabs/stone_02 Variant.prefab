@@ -1987,13 +1987,17 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[239].y
       value: -5.775
       objectReference: {fileID: 0}
+    - target: {fileID: 5222695991939542212, guid: 4dbb08060cdb33c4a953d3d724ce63f9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6237373992961540391, guid: 4dbb08060cdb33c4a953d3d724ce63f9, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8b67a6cb3f73af84282a2d110b5ce97c, type: 3}
     - target: {fileID: 8287095341118654049, guid: 4dbb08060cdb33c4a953d3d724ce63f9, type: 3}
       propertyPath: m_Name
-      value: stone_02
+      value: stone_02 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dbb08060cdb33c4a953d3d724ce63f9, type: 3}
