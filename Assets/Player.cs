@@ -1,85 +1,126 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
 
-    public GameObject stick;
-    private Vector3 direction = new Vector3(0.0f, -2.0f, 0.0f);
+    public GameObject backGround;
+    public float maxHeight = 100f;
+    public float bgStep = 0.1f;
+
+    public float scale = 0.5f;
+
+
 
     private Rigidbody2D rb;
 
-    public float speedJumpForce = 1.0f;
-    public float jumpForce = 0.0f;
+    private Vector3 startPoint;
+    private Vector3 endPoint;
+
+    private Vector3 targetPoint;
+    private Vector3 swipe;
+    private Vector3 direction;
+    private float lenght;
+
+    public float maxLenght;
 
     public bool onGround;
 
-    private Vector3 leftForceR = new Vector3(-0.2f, 0.01f, 0.0f);
-    private Vector3 rightForceR = new Vector3(0.2f, 0.01f, 0.0f);
+    public List<GameObject> playerPrefabs;
 
-    // Start is called before the first frame update
+    private GameObject currentChild;
+
+    private Vector3 bgPos;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        InvokeRepeating("Update1Sec", 0.0f, 1.0f);
+
+        int idx = (int)Random.Range(0.0f, playerPrefabs.Count);
+        ChangeForm(idx);
     }
 
-    // Update is called once per frame
+    void Update1Sec()
+    {
+        float r = Random.Range(0.0f, 1.0f);
+
+        if ((0.4 > r) && (r < 0.5f))
+        {
+            int idx = (int)Random.Range(0.0f, playerPrefabs.Count);
+            ChangeForm(idx);
+        }
+
+    }
+
     void Update()
     {
-        onGround = stick.GetComponent<Stick>().onGround;
+        bgPos = backGround.transform.localPosition;
+        bgPos.y = -bgStep * transform.position.y + 3.0f;
+        backGround.transform.localPosition = bgPos;
 
-        if (onGround)
+        if (Input.GetButtonDown("Fire1"))
         {
+            startPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            startPoint.z = 1;
+        }
+        if (Input.GetButton("Fire1"))
+        {
+            endPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            endPoint.z = 1;
 
-            if ((Input.GetKey(KeyCode.Space)) || (Input.GetKey(KeyCode.UpArrow)))
+            swipe = endPoint - startPoint;
+
+            lenght = swipe.magnitude;
+            // Debug.Log(lenght);
+            direction = swipe.normalized;
+
+            targetPoint = transform.position + direction * lenght * scale;
+
+            // lineRenderer.SetPosition(1, targetPoint);
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            if (onGround)
             {
-                Debug.Log("JUMP START");
-                jumpForce += speedJumpForce;
-            }
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                Debug.Log("LEFT");
-                rb.AddForce(leftForceR, ForceMode2D.Force);
-            }
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                Debug.Log("RIGHT");
-                rb.AddForce(rightForceR, ForceMode2D.Force);
+                rb.velocity = direction * lenght * scale;
             }
         }
 
-        if ((Input.GetKeyUp(KeyCode.Space)) || (Input.GetKeyUp(KeyCode.UpArrow)))
+        if (transform.position.y < -5.0f)
         {
-            Debug.Log("JUMP END");
-            rb.AddForce(new Vector3(0.0f, jumpForce, 0.0f), ForceMode2D.Force);
-            jumpForce = 0.0f;
-            // stick.GetComponent<Rigidbody2D>().AddForce(direction, ForceMode2D.Force);
-            // float speed = 50f;
-            // float step = speed * Time.deltaTime;
-            // stick.transform.localPosition = Vector3.MoveTowards(stick.transform.localPosition, stick.transform.localPosition + direction, step);
-            // stick.transform.localPosition += direction;
+            SceneManager.LoadScene("SampleScene");
         }
 
-        // onGround = false;
-        // stick.GetComponent<Stick>().onGround = false;
     }
 
 
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.tag == "Ground")
-    //     {
-    //         onGround = true;
-    //     }
-    // }
+    void ChangeForm(int i)
+    {
+        Destroy(currentChild);
+        GameObject newForm = Instantiate(playerPrefabs[i], transform.position, transform.rotation);
+        newForm.transform.parent = transform;
+        currentChild = newForm;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            onGround = true;
+        }
+    }
 
 
-    // void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.tag == "Ground")
-    //     {
-    //         onGround = false;
-    //     }
-    // }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            onGround = false;
+        }
+    }
 }
