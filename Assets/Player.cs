@@ -7,8 +7,7 @@ public class Player : MonoBehaviour
 {
 
     public GameObject backGround;
-    public float maxHeight = 100f;
-    public float bgStep = 0.1f;
+    public float bgStep = 0.00000001f;
 
     public float scale = 0.5f;
 
@@ -40,15 +39,14 @@ public class Player : MonoBehaviour
 
         InvokeRepeating("Update1Sec", 0.0f, 1.0f);
 
-        int idx = (int)Random.Range(0.0f, playerPrefabs.Count);
-        ChangeForm(idx);
+        ChangeForm(0);
     }
 
     void Update1Sec()
     {
         float r = Random.Range(0.0f, 1.0f);
 
-        if ((0.4 > r) && (r < 0.5f))
+        if ((0.49 > r) && (r < 0.5f))
         {
             int idx = (int)Random.Range(0.0f, playerPrefabs.Count);
             ChangeForm(idx);
@@ -59,7 +57,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         bgPos = backGround.transform.localPosition;
-        bgPos.y = -bgStep * transform.position.y + 3.0f;
+        bgPos.y = -bgStep * transform.position.y;
         backGround.transform.localPosition = bgPos;
 
         if (Input.GetButtonDown("Fire1"))
@@ -75,12 +73,9 @@ public class Player : MonoBehaviour
             swipe = endPoint - startPoint;
 
             lenght = swipe.magnitude;
-            // Debug.Log(lenght);
             direction = swipe.normalized;
 
-            targetPoint = transform.position + direction * lenght * scale;
-
-            // lineRenderer.SetPosition(1, targetPoint);
+            // targetPoint = transform.position + direction * lenght * scale;
         }
 
         if (Input.GetButtonUp("Fire1"))
@@ -91,7 +86,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (transform.position.y < -5.0f)
+        if (transform.position.y < -10.0f)
         {
             SceneManager.LoadScene("SampleScene");
         }

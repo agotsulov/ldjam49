@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3812866868862754697}
   - component: {fileID: 3812866868862754696}
   - component: {fileID: 3812866868862754699}
+  - component: {fileID: -8126660974690940677}
   m_Layer: 0
   m_Name: lenin
   m_TagString: Ground
@@ -245,3 +246,15 @@ PolygonCollider2D:
       - {x: 0.24, y: -1.01}
       - {x: 0.19, y: -1.01}
       - {x: 0.17999999, y: -1}
+--- !u!114 &-8126660974690940677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812866868862754698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91274e4077c823f468325ffa30d82074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

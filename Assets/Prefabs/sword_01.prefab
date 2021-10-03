@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 940146471263962050}
   - component: {fileID: 940146471263962051}
   - component: {fileID: 940146471263962052}
+  - component: {fileID: 6740308507660604049}
   m_Layer: 0
   m_Name: sword_01
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,3 +342,15 @@ PolygonCollider2D:
       - {x: -0.26999998, y: -5.42}
       - {x: -0.28, y: -5.39}
       - {x: -0.31, y: -5.39}
+--- !u!114 &6740308507660604049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940146471263962053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91274e4077c823f468325ffa30d82074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
